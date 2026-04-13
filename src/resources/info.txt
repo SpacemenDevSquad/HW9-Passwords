@@ -1,0 +1,31 @@
+The dataset contains a total of 756 passwords.
+      80 or 10.6% of those are all numeric.
+     252 or 33.3% of those are all lowercase.
+     402 or 53.2% of those are all letters.
+     622 or 82.3% of those have no symbols.
+
+       2 or  0.3% of all passwords have exactly   1 characters
+      14 or  1.9% of all passwords have exactly   2 characters
+      36 or  4.8% of all passwords have exactly   3 characters
+      83 or 11.0% of all passwords have exactly   4 characters
+      46 or  6.1% of all passwords have exactly   5 characters
+     143 or 18.9% of all passwords have exactly   6 characters
+      79 or 10.4% of all passwords have exactly   7 characters
+      68 or  9.0% of all passwords have exactly   8 characters
+      32 or  4.2% of all passwords have exactly   9 characters
+      35 or  4.6% of all passwords have exactly  10 characters
+      51 or  6.7% of all passwords have exactly  11 characters
+      39 or  5.2% of all passwords have exactly  12 characters
+      18 or  2.4% of all passwords have exactly  13 characters
+      12 or  1.6% of all passwords have exactly  14 characters
+      12 or  1.6% of all passwords have exactly  15 characters
+      12 or  1.6% of all passwords have exactly  16 characters
+      10 or  1.3% of all passwords have exactly  17 characters
+       8 or  1.1% of all passwords have exactly  18 characters
+      14 or  1.9% of all passwords have exactly  19 characters
+      13 or  1.7% of all passwords have exactly  20 characters
+      14 or  1.9% of all passwords have exactly  21 characters
+       5 or  0.7% of all passwords have exactly  22 characters
+       4 or  0.5% of all passwords have exactly  23 characters
+       3 or  0.4% of all passwords have exactly  24 characters
+       3 or  0.4% of all passwords have exactly  25 characters
