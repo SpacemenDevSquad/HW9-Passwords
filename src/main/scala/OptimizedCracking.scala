@@ -5,33 +5,46 @@ import scala.collection.parallel.CollectionConverters.*
 import scala.collection.{AbstractIterable, AbstractIterator, mutable}
 import scala.concurrent.duration.*
 import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.util.{Failure, Success}
 
-val numCores: Int = Runtime.getRuntime.availableProcessors() - 1
-val executorService: ExecutorService = Executors.newFixedThreadPool(numCores)
+val numAvailableCores: Int = Runtime.getRuntime.availableProcessors() - 1
+val executorService: ExecutorService = Executors.newFixedThreadPool(numAvailableCores)
 implicit val executionContext: ExecutionContext = ExecutionContext.fromExecutor(executorService)
 
+val startString = "a"
 val hashHashMap: Set[String] = getHashes
 val charList: List[String] = getCharSet
 val charMax: Int = charList.size - 1
-val futureList: List[Future[String]] = List.fill(25)(Future.successful(""))
+val futureArray = new Array[Future[(String, String)]](numAvailableCores)
 
 @main def startUp(): Unit = {
-  var string = "a]"
-  for i <- 1 to 10 do {
-    string = incrementString(string, 23)
-    println(string)
+  var passwordStart = startString
+  for i <- futureArray.indices do {
+    val currStart = passwordStart
+    futureArray(i) = Future{checkingPasswords(currStart)}
+    passwordStart = incrementString(passwordStart, 1)
   }
+  mainThread()
 }
 
 def mainThread(): Unit = {
-
+  val indicesRange = futureArray.indices
+  while (true) {
+    for i <- indicesRange do {
+      if (futureArray(i).isCompleted) {
+        val result = Await.result(futureArray(i), Duration.Inf)
+        println(result)
+        futureArray(i) = Future{checkingPasswords(incrementString(result._1, numAvailableCores))}
+      }
+    }
+  }
 }
 
-def checkingPasswords(startString: String): String = {
+def checkingPasswords(startString: String): (String, String) = {
   @tailrec
-  def helper(checkString: String): String = {
+  def helper(checkString: String): (String, String) = {
     val matchedString: String = findMatch(sha256(checkString))
-    if matchedString == "" then helper(incrementString(checkString, numCores)) else matchedString
+    if matchedString == "" then helper(incrementString(checkString, numAvailableCores)) else (checkString, matchedString)
   }
   helper(startString)
 }
