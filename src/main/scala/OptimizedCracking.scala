@@ -11,7 +11,7 @@ val numAvailableCores: Int = Runtime.getRuntime.availableProcessors() - 1
 val executorService: ExecutorService = Executors.newFixedThreadPool(numAvailableCores)
 implicit val executionContext: ExecutionContext = ExecutionContext.fromExecutor(executorService)
 
-val startString = "a"
+val startString = "1234567890"
 val hashHashMap: Set[String] = getHashes
 val charList: List[String] = getCharSet
 val charMax: Int = charList.size - 1
