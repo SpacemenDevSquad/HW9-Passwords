@@ -8,7 +8,7 @@ import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.util.{Failure, Success}
 import java.io.{FileWriter, PrintWriter}
 
-val fileList: List[String] = getFileContents("gitLab10Mil.txt").toList
+val fileList: List[String] = getFileContents("words.txt").toList
 
 @main def fileCrackStartUp(): Unit = {
   for i <- futureArray.indices do {
