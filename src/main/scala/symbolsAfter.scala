@@ -8,7 +8,7 @@ val digits = "0123456789"
 val lowercase = "abcdefghijklmnopqrstuvwxyz"
 val uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 val symbols = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-val symbolsTry = (digits+uppercase+symbols).split("").toList
+val symbolsTry: Seq[String] = (digits+uppercase+symbols).split("").toList
 
 @main def symbolAfterWord(): Unit = {
   for i <- 0 until numAvailableCores do {
