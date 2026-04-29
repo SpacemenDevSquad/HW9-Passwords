@@ -11,7 +11,7 @@ val numAvailableCores: Int = Runtime.getRuntime.availableProcessors() - 1
 val executorService: ExecutorService = Executors.newFixedThreadPool(numAvailableCores)
 implicit val executionContext: ExecutionContext = ExecutionContext.fromExecutor(executorService)
 
-val startString = "1234567890"
+val startString = "a"
 val hashHashMap: Set[String] = getHashes
 val charList: List[String] = getCharSet
 val charMax: Int = charList.size - 1
@@ -78,6 +78,6 @@ def getCharSet: List[String] = {
   val lowercase = "abcdefghijklmnopqrstuvwxyz"
   val uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   val symbols: String = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-  val fullCharset = lowercase + uppercase + digits + symbols
+  val fullCharset = lowercase
   fullCharset.split("").toList
 }
