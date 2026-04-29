@@ -15,7 +15,7 @@ import java.io.{FileWriter, PrintWriter}
     Future {
       for j <- passwords.indices do {
         val isMatch = findMatch(sha256(passwords(i)+passwords(j)))
-        if (isMatch != "") print("("+passwords(i)+passwords(j)+","+isMatch+")")
+        if (isMatch != "") println("("+passwords(i)+passwords(j)+","+isMatch+")")
       }
     }
   }
