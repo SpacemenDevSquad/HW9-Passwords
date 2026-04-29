@@ -28,7 +28,7 @@ def fileMainThread(): Unit = {
             fileCrackPassword(result._1.toInt + numAvailableCores)
           }
           val crackPass = fileList(result._1.toInt)
-          val finalString = "(" + crackPass + ", " + result._2 + ")"
+          val finalString = "(" + crackPass + "," + result._2 + ")"
           writeToFile("src/main/resources/crackedPasswords.txt", finalString)
           println("Found Password: "+crackPass)
         }
