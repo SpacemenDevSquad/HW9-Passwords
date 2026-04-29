@@ -32,7 +32,7 @@ def createFuture(index: Int, i: Int): Unit = {
       val isMatch2 = findMatch(sha256(attempt2))
       if (isMatch2 != "") answer = (attempt2, isMatch2)
     }
-    null
+    answer
   }
 }
 
