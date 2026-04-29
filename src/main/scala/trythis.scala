@@ -1,7 +1,7 @@
 
 
 
-val attemptWord = "art3"
+val attemptWord = "bob123456"
 
 @main def tryAWord(): Unit = {
   val isMatch = findMatch(sha256(attemptWord))
