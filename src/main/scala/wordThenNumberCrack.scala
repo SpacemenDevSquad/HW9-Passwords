@@ -10,7 +10,7 @@ var wordNumStartAt = 0
     wordNumCreateFuture(i, startAt)
     wordNumStartAt += 1
   }
-  symbolMainThread()
+  wordNumMainThread()
 }
 
 def wordNumCreateFuture(index: Int, i: Int): Unit = {
