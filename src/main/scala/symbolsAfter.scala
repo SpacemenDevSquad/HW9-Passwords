@@ -1,4 +1,5 @@
-import scala.concurrent.Future
+import scala.concurrent.duration.Duration
+import scala.concurrent.{Await, Future}
 
 
 var startAt = 0
@@ -20,17 +21,18 @@ val symbolsTry: Seq[String] = (digits+uppercase+symbols).split("").toList
 
 def createFuture(index: Int, i: Int): Unit = {
   futureArray(index) = Future {
+    var answer: (String, String) = null
     for j <- symbolsTry.indices do {
       for k <- symbolsTry.indices do {
         val attempt = passwords(i) + symbolsTry(j) + symbolsTry(k)
         val isMatch = findMatch(sha256(attempt))
-        if (isMatch != "") println("(" + attempt + "," + isMatch + ")")
+        if (isMatch != "") answer = (attempt, isMatch)
       }
-      val attempt2 = sha256(passwords(i) + symbolsTry(j))
+      val attempt2 = passwords(i) + symbolsTry(j)
       val isMatch2 = findMatch(sha256(attempt2))
-      if (isMatch2 != "") println("(" + attempt2 + "," + isMatch2 + ")")
+      if (isMatch2 != "") answer = (attempt2, isMatch2)
     }
-    ("", "")
+    null
   }
 }
 
@@ -39,6 +41,8 @@ def symbolMainThread(): Unit = {
   while true do {
     for i <- futureArray.indices do {
       if (futureArray(i).isCompleted) {
+        val result = Await.result(futureArray(i), Duration.Inf)
+        if (result != null) println(result)
         createFuture(i, startAt)
         startAt += 1
       }
