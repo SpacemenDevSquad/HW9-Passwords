@@ -17,6 +17,8 @@ var combineWordsStartAt = 0
     combineWordsCreateFuture(i, combineWordsStartAt)
     combineWordsStartAt += 1
   }
+
+  combineWordsMainThread()
 }
 
 
